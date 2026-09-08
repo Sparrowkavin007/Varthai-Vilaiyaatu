@@ -37,6 +37,18 @@ const CATEGORY_FACTS = {
   }
 };
 
+const CATEGORY_CONTEXT = {
+  A: ['general economics and teaching', 'பொது பொருளியல் மற்றும் கற்பித்தல்'],
+  C: ['mathematical and quantitative methods', 'கணித மற்றும் அளவுசார் முறைகள்'],
+  D: ['microeconomics', 'நுண்ணியல் பொருளியல்'],
+  E: ['macroeconomics and monetary economics', 'பேரியல் மற்றும் பணவியல் பொருளியல்'],
+  F: ['international economics', 'பன்னாட்டு பொருளியல்'],
+  G: ['financial economics', 'நிதியியல் பொருளியல்'],
+  I: ['health, education, and welfare economics', 'சுகாதாரம், கல்வி மற்றும் நலப் பொருளியல்'],
+  J: ['labor and demographic economics', 'உழைப்பு மற்றும் மக்கள்தொகை பொருளியல்'],
+  O: ['economic development and technology change', 'பொருளாதார வளர்ச்சி மற்றும் தொழில்நுட்ப மாற்றம்']
+};
+
 const QUESTION_FORMS = [
   ['Which concept is most directly associated with this topic?', 'இந்த தலைப்புடன் நேரடியாக தொடர்புடைய கருத்து எது?'],
   ['Which term best describes this economic idea?', 'இந்த பொருளியல் கருத்தை சிறப்பாகக் குறிக்கும் சொல் எது?'],
@@ -61,8 +73,8 @@ const buildQuestionBank = () => Object.entries(CATEGORY_FACTS).flatMap(([categor
   const answerTa = facts.ta[index];
   const form = QUESTION_FORMS[index];
   const languageVariants = [
-    { language: 'en', questionText: `${form[0]} ${answerEn}?`, answer: answerEn, distractors: DISTRACTORS.en },
-    { language: 'ta', questionText: `${form[1]} ${answerTa}?`, answer: answerTa, distractors: DISTRACTORS.ta }
+    { language: 'en', questionText: `In ${CATEGORY_CONTEXT[category][0]}, ${form[0].toLowerCase()}`, answer: answerEn, distractors: DISTRACTORS.en },
+    { language: 'ta', questionText: `${CATEGORY_CONTEXT[category][1]} பிரிவில், ${form[1]}`, answer: answerTa, distractors: DISTRACTORS.ta }
   ];
 
   return languageVariants.map(({ language, questionText, answer, distractors }) => {
