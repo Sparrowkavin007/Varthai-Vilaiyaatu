@@ -1,7 +1,9 @@
 {
   "version": 2,
   "framework": "nextjs",
-  "root": "frontend",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install"
+  "buildCommand": "cd frontend && npm run build",
+  "installCommand": "cd frontend && npm install",
+  "env": {
+    "NEXT_PUBLIC_API_URL": "@public_api_url"
+  }
 }
